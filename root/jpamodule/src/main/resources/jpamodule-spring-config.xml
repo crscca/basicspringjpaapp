@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  
+  
+  <bean id="myEmf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+      <property name="persistenceUnitName" value="example.persistence.unit"/>
+   </bean>
+   
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="myEmf"/>
+  </bean>
+  
+  <tx:annotation-driven/>
+   
+   <!-- bean post-processor for JPA annotations -->
+  <!--  bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/ -->
+  
+  <!-- post-processors for all standard config annotations instead of above -->
+  <context:annotation-config/>
+
+  <!--  bean id="userDao" class="com.samples.dao.JpaDAOFactory.UserDAOJpa" >
+ 
+  </bean -->
+  <bean  id="userDao" class="com.samples.dao.GenericJpaDAO">
+   <constructor-arg>
+        <value type="java.lang.Class">com.samples.entities.User</value>
+    </constructor-arg>
+  </bean>
+  <bean id="userService" class="com.samples.service.UserService">
+  <property name="userDao" ref="userDao"></property>
+  </bean>
+  
+
+ 
+
+</beans>

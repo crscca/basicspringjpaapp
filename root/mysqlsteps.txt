@@ -1,0 +1,13 @@
+
+
+mysql> create database exampledb;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create user 'exampleuser'@'localhost' identified by 'password';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> grant all on exampledb.* to 'exampleuser'@'localhost';
+Query OK, 0 rows affected (0.06 sec)
+
+mysql>
+
