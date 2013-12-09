@@ -1,8 +1,13 @@
+Environment:
+Java6
+maven 3
+mysql
+
 I have not put any test cases in the JPA layer yet.
 There are 2 types of integration test cases inside the webapp layer.
 
 The first type of integration test case mocks the server layer but otherwise does the complete testing
-The other integration test case actually launches the server, deploys the app and runs the test casess.
+The other integration test case actually launches the embedded server, deploys the app and runs the test casess.
 
 Only functionality currently being tested is a create user entity.
 
@@ -12,6 +17,14 @@ Steps to test.
 •	run /root/build.bat in a command shell set to the root project path will execute the integration test mocking the web input and output
 •	run /root/testintegration.bat in a command shell set to the root project pathto execute both type of integration tests
 
+TODO:
+Improve the JPA spring DI and configuration
+Improve the test casees
+\root\webmodule\src\test\java\com\sample\json\UserControllerTests.java - ex of mock test case
+root\webmodule\src\test\java\com\sample\json\UserControllerIT.java -ex of full integration test case
+
 Other notes:
+Generic data access object- do we need so many types ?
 
-
+Things to discuss investigate:
+Spring data approach
