@@ -33,3 +33,6 @@ Generic data access object- do we need so many types ?
 
 Things to discuss investigate:
 Alternate Spring data approach
+
+Also Note:
+Some of the code is from the chapter we refrred to.
