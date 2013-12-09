@@ -3,6 +3,11 @@ Java6
 maven 3
 mysql
 
+Project structure:
+root - parent pom project
+jpamodule - java maven module
+webmodule - webapp maven module
+
 I have not put any test cases in the JPA layer yet.
 There are 2 types of integration test cases inside the webapp layer.
 
@@ -27,4 +32,4 @@ Other notes:
 Generic data access object- do we need so many types ?
 
 Things to discuss investigate:
-Spring data approach
+Alternate Spring data approach
