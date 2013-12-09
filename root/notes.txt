@@ -9,8 +9,8 @@ Only functionality currently being tested is a create user entity.
 Steps to test.
 •	execute /root/mysqlsteps.txt
 •	edit /root/setenv.bat
-•	run /root/build.bat in a shell set to the root project path will execute the integration test mocking the web input and output
-•	run /root/testintegration.bat bat in a shell set to the root project pathto execute both type of integration tests
+•	run /root/build.bat in a command shell set to the root project path will execute the integration test mocking the web input and output
+•	run /root/testintegration.bat in a command shell set to the root project pathto execute both type of integration tests
 
 Other notes:
 
