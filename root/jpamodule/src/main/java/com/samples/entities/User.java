@@ -19,6 +19,8 @@ public class User implements IAddressHolder {
 	private Long id;
 	@Column(unique=true, nullable=false)
 	private String loginId;
+	@Column(nullable=false)
+	private String password;
 	@Column( nullable=false)
     private String title;
 	@Column( nullable=false)
@@ -45,10 +47,11 @@ public class User implements IAddressHolder {
 
 	
 
-	public User(String loginId, String title, char gender, String firstName,
+	public User(String loginId, String password, String title, char gender, String firstName,
 			String lastName, String emailId, String phone, Date birthday) {
 		super();
 		this.loginId = loginId;
+		this.password=password;
 		this.title = title;
 		this.gender = gender;
 		this.firstName = firstName;
@@ -56,6 +59,18 @@ public class User implements IAddressHolder {
 		this.emailId = emailId;
 		this.phone=phone;
 		this.birthday = birthday;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

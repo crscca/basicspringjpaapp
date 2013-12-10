@@ -16,7 +16,7 @@ import com.samples.service.UserService;
 public class Check {
 
 	public static void main(String[] args) {
-		User u= new User("loginId1", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
+		User u= new User("loginId1", "password", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
 		Address a = setAddress(u, "line1", "line2", "line3", "city", "state", "country", "zipOrPin");
 		create(u);
 			

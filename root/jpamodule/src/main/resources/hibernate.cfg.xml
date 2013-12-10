@@ -12,6 +12,9 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/exampledb</property>
         <property name="connection.username">exampleuser</property>
         <property name="connection.password">password</property>
+         <property name="hbm2ddl.auto">create</property> 
+         <property name="hibernate.hbm2ddl.import_files">/seed.sql</property>
+         
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -29,7 +32,7 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup e.g create-drop|update -->
-        <property name="hbm2ddl.auto">create-drop</property>
+       
 
       
 

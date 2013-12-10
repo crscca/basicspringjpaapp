@@ -23,7 +23,7 @@ public class LongMain {
 		GenericJpaDAO g=(GenericJpaDAO) userDAO;
 		g.setEntityManager(entityManager);
 		entityManager.getTransaction().begin();
-		User u= new User("loginId1", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
+		User u= new User("loginId1","password", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
 		userDAO.makePersistent(u);
 		
 		entityManager.getTransaction().commit();
