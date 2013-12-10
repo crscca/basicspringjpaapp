@@ -34,7 +34,7 @@ public class UserController {
 	// StringHttpMessageConverter
 
 	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public ResponseEntity<User> readJson1(@Valid @RequestBody User bean) {
+	public ResponseEntity<User> create(@Valid @RequestBody User bean) {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.TEXT_PLAIN);

@@ -21,7 +21,7 @@ public class UserControllerIT extends AbstractTestNGTest{
 	@Test()
 	public void createUser() throws Exception {
 		
-		User user= new User("loginId1", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
+		User user= new User("loginId1","password", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
 		Address a = setAddress(user, "line1", "line2", "line3", "city", "state", "country", "zipOrPin");
 		
 		Contact contact= new Contact("Mr", 'M', "Contactfirstname", "Contactlastname", "contactemail@amail.com", "123456778");
