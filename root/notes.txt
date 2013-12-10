@@ -24,7 +24,7 @@ Steps to test.
 
 TODO:
 Improve the JPA spring DI and configuration
-Improve the test casees
+Improve the test casees - done for the mock web test
 \root\webmodule\src\test\java\com\sample\json\UserControllerTests.java - ex of mock test case
 root\webmodule\src\test\java\com\sample\json\UserControllerIT.java -ex of full integration test case
 
