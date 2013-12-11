@@ -18,20 +18,25 @@ import org.junit.runner.RunWith;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.sample.AbstractContextControllerTests;
+import com.samples.entities.Additional;
 import com.samples.entities.Address;
 import com.samples.entities.Contact;
 import com.samples.entities.IAddressHolder;
 import com.samples.entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@TransactionConfiguration(defaultRollback=true)
+@Transactional()
 public class UserControllerTests extends AbstractContextControllerTests {
 
 	private static String URI = "/user/{action}";
@@ -40,9 +45,11 @@ public class UserControllerTests extends AbstractContextControllerTests {
 	
 	@Before
 	public void setup() {
-		WebApplicationContext wac2 = this.wac;
+	
 		
-		this.mockMvc = webAppContextSetup(wac2).alwaysExpect(status().isOk()).build();
+		this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
+		
+		
 	}
 
 
@@ -56,7 +63,7 @@ public class UserControllerTests extends AbstractContextControllerTests {
 
 
 @Test
-public void createUser1() throws Exception {
+public void createUser() throws Exception {
 	
 	User user= new User("loginId5","password", "Mr", 'M', "FirstName1", "LastName1", "emailId@amail.com", "(011)2512-5189", new Date(2001-1900, 1-1,31));
 	Address a = setAddress(user, "line1", "line2", "line3", "city", "state", "country", "zipOrPin");
@@ -65,6 +72,9 @@ public void createUser1() throws Exception {
 	setAddress(contact, "line1", "line2", "line3", "city", "state", "country", "zipOrPin");
 	
 	user.getContacts().add(contact);
+	
+	Additional ad= new Additional("NAME1", "name1");
+	user.getAdditionals().add(ad);
 	ObjectMapper objectMapper = new ObjectMapper();
 	 String inputString = objectMapper.writeValueAsString(user);
 	
@@ -74,6 +84,7 @@ this.mockMvc.perform(
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(inputString.getBytes()))
 			.andExpect(jsonPath("$.id", notNullValue()))
+			.andExpect(jsonPath("$.id", is(4)))
 			.andExpect(jsonPath("$.address.id", notNullValue()))
 			.andExpect(jsonPath("$.contacts", hasSize(1)))
 			.andExpect(jsonPath("$.contacts[0].id", notNullValue()));			

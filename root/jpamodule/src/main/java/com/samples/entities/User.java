@@ -35,7 +35,22 @@ public class User implements IAddressHolder {
     private Address address;
     @OneToMany(cascade=CascadeType.ALL)
     private Set<Contact> contacts=new HashSet<Contact>();
+    
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<Additional> additionals=new HashSet<Additional>();
    
+	public Set<Additional> getAdditionals() {
+		return additionals;
+	}
+
+
+
+	public void setAdditionals(Set<Additional> additionals) {
+		this.additionals = additionals;
+	}
+
+
+
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(nullable=false)
     private Date birthday;

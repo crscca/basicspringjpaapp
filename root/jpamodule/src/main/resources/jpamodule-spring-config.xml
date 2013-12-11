@@ -38,6 +38,18 @@
   <property name="userDao" ref="userDao"></property>
   </bean>
   
+   <bean  id="additionalDao" class="com.samples.dao.GenericJpaDAO">
+   <constructor-arg>
+        <value type="java.lang.Class">com.samples.entities.Additional</value>
+    </constructor-arg>
+  </bean>
+  <bean id="additionalService" class="com.samples.service.GenericService">
+   <constructor-arg>
+        <value type="java.lang.Class">com.samples.entities.Additional</value>
+    </constructor-arg>
+  <property name="dao" ref="additionalDao"></property>
+  </bean>
+  
 
  
 

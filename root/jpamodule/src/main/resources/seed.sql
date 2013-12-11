@@ -2,4 +2,12 @@ insert into Address (city, country, line1, line2, line3, state, zipOrPin) values
 insert into User (address_id, birthday, emailId, firstName, gender, lastName, loginId, password, phone, title) values (1, "2006-02-02 15:35:00", 'anemaila@email.com', 'Fn', 'M', 'Ln', 'login1', 'password', 'phone1', 'zip1');
 insert into Address (city, country, line1, line2, line3, state, zipOrPin) values ('cityb','countryb' , 'line1b', 'line2b', 'line3b', 'stateb', 'zipb');
 insert into Contact (address_id, emailId, firstName, gender, lastName, phone, title) values (2, 'email2@email.com', 'Fna', 'M', 'Lna', 'phone2', 'Mr');
+
 insert into User_Contact (User_id, contacts_id) values (1, 1);
+insert into Additional (description, name) values ('NAMEX', 'namex');
+insert into Additional (description, name) values ('NAMEY', 'namey');
+
+insert into User (address_id, birthday, emailId, firstName, gender, lastName, loginId, password, phone, title) values (NULL, "2006-02-02 15:35:00", 'anemaila@email.com', 'Fn', 'M', 'Ln', 'loginx', 'password', 'phone1', 'zip1');
+insert into User (address_id, birthday, emailId, firstName, gender, lastName, loginId, password, phone, title) values (NULL, "2006-02-02 15:35:00", 'anemaila@email.com', 'Fn', 'M', 'Ln', 'loginy', 'password', 'phone1', 'zip1');
+insert into User_Additional (User_id, additionals_id) values (2, 1);
+insert into User_Additional (User_id, additionals_id) values (3, 2);

@@ -27,9 +27,10 @@ import java.lang.reflect.TypeVariable;
 public   class GenericJpaDAO<T,ID extends Serializable>
         implements GenericDAO<T, ID> {
 
-    private Class<T> entityBeanType;
+	 private EntityManager em;
+	private Class<T> entityBeanType;
 
-    private EntityManager em;
+   
 
     protected GenericJpaDAO() {
     	Type superClass = getClass()

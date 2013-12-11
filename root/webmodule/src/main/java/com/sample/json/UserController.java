@@ -42,14 +42,11 @@ public class UserController {
 		//(u, "line1", "line2", "line3", "city", "state", "country", "zipOrPin");
 		User u=userService.createuser(bean);
 		
+		
 		return new ResponseEntity<User>(u, headers , HttpStatus.OK);
 	}
 	
-	private static Address setAddress(IAddressHolder u, String line1, String line2, String line3, String city, String state, String country, String zipOrPin) {
-		Address a= new Address(line1, line2, line3, city, state, country, zipOrPin);
-		u.setAddress(a);
-		return a;
-	}
+	
 
 	
 	@Resource(name="userService")
