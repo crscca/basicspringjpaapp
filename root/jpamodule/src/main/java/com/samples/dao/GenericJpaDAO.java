@@ -3,8 +3,10 @@ package com.samples.dao;
 import javax.persistence.*;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 
 import java.util.*;
+import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
@@ -166,6 +168,37 @@ public   class GenericJpaDAO<T,ID extends Serializable>
 		}
 		 getEntityManager().merge(entity);
 		
+	}
+
+	
+public List<T> findAll(int firstResult, int maxResults) {
+		
+		PropertyDescriptor[] propertyDescriptors = PropertyUtils.getPropertyDescriptors(getEntityBeanType());
+		
+		String q="select m from "+getEntityBeanType().getSimpleName()+" m ";//+"left join fetch m.additionals";
+		for (PropertyDescriptor propertyDescriptor : propertyDescriptors) 
+		{
+			Class<?> propertyType = propertyDescriptor.getPropertyType();
+			if(propertyType.isAssignableFrom(Set.class)||propertyType.isAssignableFrom(List.class))
+			{
+				q+=" left join fetch m.";
+				q+=propertyDescriptor.getName();
+			}
+		}
+		Class cz=getEntityBeanType();
+		
+		System.out.println("-----------q="+q);
+		TypedQuery<T> query = this.em.createQuery(q,
+				getEntityBeanType());
+		
+		return query.setFirstResult(firstResult).setMaxResults(maxResults)
+				.getResultList();
+	}
+
+	public Long count() {
+		TypedQuery<Long> query = this.em.createQuery(
+				"select count(m) from "+getEntityBeanType().getSimpleName()+" m", Long.class);
+		return query.getSingleResult();
 	}
 
 }

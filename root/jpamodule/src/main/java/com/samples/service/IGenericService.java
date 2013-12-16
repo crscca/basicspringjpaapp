@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.samples.beans.PageReturnData;
 import com.samples.dao.GenericJpaDAO;
 
 public interface IGenericService<T, ID extends Serializable> {
@@ -21,5 +22,6 @@ public interface IGenericService<T, ID extends Serializable> {
 	public abstract T findById(ID id, boolean lock);
 
 	public abstract List<T> findAll();
+	 public PageReturnData<T> getPage(int pageSize, int pageNo);
 
 }

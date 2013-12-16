@@ -14,16 +14,31 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework-security-version}</version>
+			<scope>compile</scope>
+		</dependency>
 
-		<!-- @Inject -->
+		<!-- @Inject 
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-
-		<!-- Servlet -->
-		<dependency>
+-->
+  <!--  <dependency>
+ 
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+         -->
+		<!-- Servlet --> 
+		  <dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-servlet-api</artifactId>
 			<version>7.0.30</version>
@@ -56,7 +71,7 @@
 					<artifactId>servlet-api</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency> 
 
 		<!-- Jackson JSON Processor -->
 		<dependency>
@@ -116,12 +131,7 @@
 			</exclusions>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${org.springframework-security-version}</version>
-			<scope>compile</scope>
-		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>

@@ -29,5 +29,8 @@ public interface GenericDAO<T, ID extends Serializable> {
     
     void makeTransient(ID id, boolean lock);
     void updateField(ID id, boolean lock, String fieldName, Object value);
+    
+    Long count();
+    List<T> findAll(int firstResult, int maxResults);
 
 }

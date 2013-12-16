@@ -51,6 +51,17 @@
   </bean>
   
 
- 
+  <bean  id="userSimplifiedDao" class="com.samples.dao.GenericJpaDAO">
+   <constructor-arg>
+        <value type="java.lang.Class">com.samples.entities.UserSimplified</value>
+    </constructor-arg>
+  </bean>
+  <!--  bean id="userSimplifiedService"  class="com.samples.service.UserSimplifiedService" -->
+  <bean id="userSimplifiedService"  class="com.samples.service.GenericService">
+   <constructor-arg>
+        <value type="java.lang.Class">com.samples.entities.UserSimplified</value>
+    </constructor-arg>
+  <property name="dao" ref="userSimplifiedDao"></property>
+  </bean>
 
 </beans>

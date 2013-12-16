@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.samples.beans.PageReturnData;
 import com.samples.dao.GenericJpaDAO;
 import com.samples.dao.UserDAO;
 import com.samples.entities.User;
@@ -47,6 +48,21 @@ public class GenericService<T, ID extends Serializable> implements IGenericServi
     	
         
       
+    }
+    
+    public PageReturnData<T> getPage(int pageSize, int pageNo)
+    {
+    	long pageSizeInLong=pageSize;
+    	PageReturnData<T> ret= new PageReturnData<T>();
+    	int firstResult = (pageNo-1) * pageSize;
+    	long count=dao.count();
+    	long noOfPages = (count/pageSizeInLong)+((count%pageSizeInLong==0)?0:1);
+    	List<T> data = this.dao.findAll(firstResult, pageSize);
+    	ret.setData(data);
+    	ret.setNoOfPages(noOfPages);
+    	ret.setCurrentPage(pageNo);
+    	ret.setNoOfTotalRows(count);
+    	return ret;
     }
 
 

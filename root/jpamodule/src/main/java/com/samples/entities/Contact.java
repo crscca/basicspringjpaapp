@@ -23,8 +23,8 @@ public class Contact implements IAddressHolder {
 	private Long id;
 	@Column( nullable=false)
     private String title;
-	@Column( nullable=false)
-    private char gender;
+//	@Column( nullable=false)
+//    private char gender;
 	@Column( nullable=false)
     private String firstName;
 	@Column( nullable=false)
@@ -37,11 +37,11 @@ public class Contact implements IAddressHolder {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Contact(String title, char gender, String firstName,
+	public Contact(String title,/* char gender,*/ String firstName,
 			String lastName, String emailId, String phone) {
 		super();
 		this.title = title;
-		this.gender = gender;
+		//this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
@@ -59,12 +59,12 @@ public class Contact implements IAddressHolder {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public char getGender() {
+/*	public char getGender() {
 		return gender;
 	}
 	public void setGender(char gender) {
 		this.gender = gender;
-	}
+	}*/
 	public String getFirstName() {
 		return firstName;
 	}
